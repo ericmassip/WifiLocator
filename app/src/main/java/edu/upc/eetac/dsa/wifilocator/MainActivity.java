@@ -42,25 +42,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(getApplicationContext(), "wifi is disabled..making it enabled", Toast.LENGTH_LONG).show();
             wifi.setWifiEnabled(true);
         }
-
-        registerReceiver(new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context c, Intent intent) {
-                results = wifi.getScanResults();
-            }
-        }, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
     }
 
     public void onClick(View view) {
         wifi.startScan();
-        Toast.makeText(this, "Scanning...." + results.size(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Scanning....", Toast.LENGTH_SHORT).show();
+        results = wifi.getScanResults();
         wifis = new String[results.size()];
-        for(int i = 0; i < results.size(); i++) {
-            wifis[i] = results.get(i).BSSID;
+        if (results != null) {
+            for (int i = 0; i < results.size(); i++) {
+                wifis[i] = results.get(i).BSSID;
+            }
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                    android.R.layout.simple_list_item_1, android.R.id.text1, wifis);
+            wifiNetworks.setAdapter(adapter);
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, wifis);
-        wifiNetworks.setAdapter(adapter);
     }
 }
 
