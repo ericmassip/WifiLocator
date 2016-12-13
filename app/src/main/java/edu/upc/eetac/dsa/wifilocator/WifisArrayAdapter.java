@@ -25,8 +25,8 @@ public class WifisArrayAdapter extends ArrayAdapter<WifiNetwork> {
         ViewHolder(){}
     }
 
-    public WifisArrayAdapter(final Context context, final int resource, final int textViewResourceId, final List<WifiNetwork> objects) {
-        super(context, R.layout.activity_main, textViewResourceId, objects);
+    public WifisArrayAdapter(Context context, List<WifiNetwork> objects) {
+        super(context, R.layout.activity_main, objects);
         this.inflater = LayoutInflater.from(context);
     }
 

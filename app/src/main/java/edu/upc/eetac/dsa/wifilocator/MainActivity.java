@@ -1,5 +1,6 @@
 package edu.upc.eetac.dsa.wifilocator;
 
+import android.app.ListActivity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -20,12 +21,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends ListActivity implements View.OnClickListener {
     WifiManager wifi;
     ListView wifiNetworks;
     Button buttonScan;
     List<ScanResult> results;
-    String[] wifis;
+    List<WifiNetwork> wifis;
 
     /* Called when the activity is first created. */
     @Override
@@ -48,14 +49,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         wifi.startScan();
         Toast.makeText(this, "Scanning....", Toast.LENGTH_SHORT).show();
         results = wifi.getScanResults();
-        wifis = new String[results.size()];
+        wifis = new ArrayList<>();
         if (results != null) {
             for (int i = 0; i < results.size(); i++) {
-                wifis[i] = results.get(i).BSSID;
+                WifiNetwork wifiNetwork = new WifiNetwork();
+                wifiNetwork.BSSID = results.get(i).BSSID;
+                wifiNetwork.SSID = results.get(i).SSID;
+                wifiNetwork.level = results.get(i).level;
+                wifis.add(wifiNetwork);
             }
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                    android.R.layout.simple_list_item_1, android.R.id.text1, wifis);
-            wifiNetworks.setAdapter(adapter);
+            setListAdapter(new WifisArrayAdapter(MainActivity.this, wifis));
         }
     }
 }
