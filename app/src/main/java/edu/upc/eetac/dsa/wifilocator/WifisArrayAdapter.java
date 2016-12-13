@@ -43,7 +43,7 @@ public class WifisArrayAdapter extends ArrayAdapter<WifiNetwork> {
         final WifiNetwork wifiNetwork = getItem(position);
 
         if(null == itemView) {
-            itemView = this.inflater.inflate(R.layout.activity_main, parent, false);
+            itemView = this.inflater.inflate(R.layout.wifis_array_adapter, parent, false);
 
             holder = new ViewHolder();
 

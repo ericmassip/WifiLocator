@@ -45,7 +45,6 @@ public class MainActivity extends ListActivity implements View.OnClickListener {
 
     public void onClick(View view) {
         wifi.startScan();
-        Toast.makeText(this, "Scanning....", Toast.LENGTH_SHORT).show();
         results = wifi.getScanResults();
         wifis = new ArrayList<>();
         if (results != null) {

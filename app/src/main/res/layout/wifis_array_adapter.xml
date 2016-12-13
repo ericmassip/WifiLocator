@@ -6,23 +6,25 @@
 
     <TextView
         android:text="@string/bssid"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/bssid"
-        android:layout_marginRight="100dp"
-        android:layout_marginLeft="@dimen/activity_vertical_margin" />
+        android:layout_gravity="start"
+        android:layout_weight="1" />
 
     <TextView
         android:text="@string/ssid"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/ssid"
-        android:layout_marginRight="120dp"
-        android:textAlignment="textStart" />
+        android:layout_gravity="center"
+        android:layout_weight="1" />
 
     <TextView
         android:text="@string/level"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/level" />
+        android:layout_gravity="end"
+        android:id="@+id/level"
+        android:layout_weight="1" />
 </LinearLayout>
