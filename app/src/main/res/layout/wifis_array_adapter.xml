@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
     <TextView
-        android:text="TextView"
+        android:text="@string/bssid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/bssid" />
+        android:id="@+id/bssid"
+        android:layout_marginRight="100dp"
+        android:layout_marginLeft="@dimen/activity_vertical_margin" />
 
     <TextView
-        android:text="TextView"
+        android:text="@string/ssid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ssid" />
+        android:id="@+id/ssid"
+        android:layout_marginRight="120dp"
+        android:textAlignment="textStart" />
 
     <TextView
-        android:text="TextView"
+        android:text="@string/level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/level" />

@@ -2,4 +2,7 @@
     <string name="app_name">WifiLocator</string>
     <string name="wifiNetworksTitle">Wifi Networks</string>
     <string name="showWifiNetworksBtn">Show Wifi Networks</string>
+    <string name="bssid">BSSID</string>
+    <string name="ssid">SSID</string>
+    <string name="level">Level</string>
 </resources>
