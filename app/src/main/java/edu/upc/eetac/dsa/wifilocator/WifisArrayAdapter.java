@@ -42,10 +42,21 @@ public class WifisArrayAdapter extends ArrayAdapter<WifiNetwork> {
 
             holder = new ViewHolder();
 
-            holder.BSSID = (TextView) itemView.findViewById(R.id.)
-        }
-        View rowView = inflater.inflate(R.layout.activity_main, parent, false);
-        TextView BSSID = (TextView) rowView.findViewById(R.id.)
+            holder.BSSID = (TextView) itemView.findViewById(R.id.bssid);
+            holder.SSID = (TextView) itemView.findViewById(R.id.ssid);
+            holder.level = (TextView) itemView.findViewById(R.id.level);
 
+            itemView.setTag(holder);
+        } else {
+            holder = (ViewHolder)itemView.getTag();
+        }
+
+        if (wifiNetwork != null) {
+            holder.BSSID.setText(wifiNetwork.BSSID);
+            holder.SSID.setText(wifiNetwork.SSID);
+            holder.level.setText(Double.toString(wifiNetwork.level));
+        }
+
+        return itemView;
     }
 }
