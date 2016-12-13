@@ -15,25 +15,30 @@ import java.util.List;
  */
 
 public class WifisArrayAdapter extends ArrayAdapter<WifiNetwork> {
-    private LayoutInflater inflater;
-
-    private static class ViewHolder {
-        private TextView BSSID;
-        private TextView SSID;
-        private TextView level;
-
-        ViewHolder(){}
-    }
+    private final Context context;
 
     public WifisArrayAdapter(Context context, List<WifiNetwork> objects) {
         super(context, R.layout.activity_main, objects);
-        this.inflater = LayoutInflater.from(context);
+        this.context = context;
     }
 
     @Override
     @NonNull
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
-        View itemView = convertView;
+        LayoutInflater inflater = (LayoutInflater) context
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View rowView = inflater.inflate(R.layout.wifis_array_adapter, parent, false);
+        TextView BSSID = (TextView) rowView.findViewById(R.id.bssid);
+        TextView SSID = (TextView) rowView.findViewById(R.id.ssid);
+        TextView level = (TextView) rowView.findViewById(R.id.level);
+        WifiNetwork wifiNetwork = getItem(position);
+        BSSID.setText(wifiNetwork.BSSID);
+        SSID.setText(wifiNetwork.SSID);
+        level.setText(Double.toString(wifiNetwork.level));
+
+        return rowView;
+
+        /*View itemView = convertView;
         ViewHolder holder = null;
         final WifiNetwork wifiNetwork = getItem(position);
 
@@ -57,6 +62,6 @@ public class WifisArrayAdapter extends ArrayAdapter<WifiNetwork> {
             holder.level.setText(Double.toString(wifiNetwork.level));
         }
 
-        return itemView;
+        return itemView;*/
     }
 }
