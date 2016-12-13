@@ -23,7 +23,6 @@ import java.util.List;
 
 public class MainActivity extends ListActivity implements View.OnClickListener {
     WifiManager wifi;
-    ListView wifiNetworks;
     Button buttonScan;
     List<ScanResult> results;
     List<WifiNetwork> wifis;
@@ -36,7 +35,6 @@ public class MainActivity extends ListActivity implements View.OnClickListener {
 
         buttonScan = (Button) findViewById(R.id.showWifiNetworksButton);
         buttonScan.setOnClickListener(this);
-        wifiNetworks = (ListView) findViewById(R.id.wifiNetworks);
 
         wifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         if (!wifi.isWifiEnabled()) {
